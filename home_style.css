@@ -1,0 +1,97 @@
+body{
+    border: 0;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    overflow-x: hidden;
+    background-color: #f5ede7;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+}
+
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+}
+
+.design_text{
+    font-family: 'Playwrite PL','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: xx-large;
+    font-weight: 800;
+}
+
+.logo{
+    display: flex;
+    justify-content:left;
+}
+
+.about{
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    align-items: center;
+    padding-right: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: inherit;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #c61919;
+    transform: scale(1.1);
+}
+
+.contact-link {
+    text-decoration: underline;
+}
+
+.login_button{
+    border: solid black 0.1em;
+    border-radius: 2rem;
+}
+
+.regular_text{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    padding: 2vh;
+    flex: 1;
+    align-items: center;
+}
+
+.moto{
+    justify-content: center;
+    font-size: 3em;
+    font-weight:900;
+}
+
+/* Typing cursor animation */
+.typing-cursor::after {
+    content: '|';
+    animation: blink 1s infinite;
+    color: #c61919;
+    font-weight: normal;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+.bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.6em;
+    padding: 1vh;
+    gap: 1rem;
+}
