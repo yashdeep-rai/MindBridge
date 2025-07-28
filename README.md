@@ -1,2 +1,2 @@
 # MindBridge
-MindBridge helps yu to track your mental health and assess it .
+MindBridge helps you to track your mental health and assess it .
