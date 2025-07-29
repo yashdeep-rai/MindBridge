@@ -60,14 +60,7 @@ async function animateTexts() {
             mobileButton.classList.add('show');
         }
     }
-    // Show mobile button after typing animation completes (mobile only)
-    if (isMobile) {
-        await new Promise(resolve => setTimeout(resolve, 500)); // Wait a bit
-        const mobileButton = document.querySelector('.mobile-get-started');
-        if (mobileButton) {
-            mobileButton.classList.add('show');
-        }
-    }
+   
 }
 
 // Handle orientation changes on mobile

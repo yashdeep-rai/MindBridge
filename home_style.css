@@ -142,6 +142,7 @@ body{
 }
 
 .mobile-get-started.show {
+    display: block;
     opacity: 1;
     transform: translateY(0);
 }
@@ -151,6 +152,16 @@ body{
     padding: 1rem 2rem;
     font-size: 1.2rem;
     font-weight: bold;
+}
+
+/* Hide mobile nav get started button on desktop */
+.mobile-nav-get-started {
+    display: none;
+}
+
+/* Desktop get started button is visible by default */
+.desktop-get-started {
+    display: inline-block;
 }
 
 .bottom{
@@ -229,8 +240,16 @@ body{
         display: none; /* Hide navbar button on mobile */
     }
     
+    .desktop-get-started {
+        display: none; /* Hide desktop button on mobile */
+    }
+    
     .mobile-get-started {
-        display: block; /* Show mobile button */
+        display: none !important; /* Hide mobile button in main section */
+    }
+    
+    .mobile-nav-get-started {
+        display: block; /* Show get started button in hamburger menu */
     }
     
     .moto {
