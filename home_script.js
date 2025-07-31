@@ -1,4 +1,14 @@
-// Typing animation function with cursor
+/* ========================================
+   TYPING ANIMATION FUNCTIONALITY
+======================================== */
+
+/**
+ * Creates a typewriter effect for text elements
+ * @param {HTMLElement} element - The element to type into
+ * @param {string} text - The text to type
+ * @param {number} speed - Typing speed in milliseconds
+ * @returns {Promise} - Resolves when typing is complete
+ */
 function typeWriter(element, text, speed = 100) {
     return new Promise((resolve) => {
         let i = 0;
@@ -23,109 +33,134 @@ function typeWriter(element, text, speed = 100) {
     });
 }
 
-// Function to animate multiple elements in sequence
+/**
+ * Orchestrates the typing animation sequence
+ */
 async function animateTexts() {
+    // Get DOM elements
+    const mindBridgeElement = document.querySelector('.logo-text');
+    const mottoElements = document.querySelectorAll('.motto-line');
     
-    const mindBridgeElement = document.querySelector('.design_text');
-    const mentalHealthElements = document.querySelectorAll('.moto span');
+    // Text content
+    const texts = {
+        mindBridge: 'MindBridge',
+        mental: 'Your Mental',
+        health: 'Health Matters'
+    };
     
-    const mindBridgeText = 'MindBridge';
-    const mentalText = 'Your Mental';
-    const healthText = 'Health Matters';
-    
+    // Clear existing content
     mindBridgeElement.innerHTML = '';
-    mentalHealthElements[0].innerHTML = '';
-    mentalHealthElements[1].innerHTML = '';
+    mottoElements.forEach(el => el.innerHTML = '');
     
     // Adjust speed based on screen size
     const isMobile = window.innerWidth <= 768;
-    const speed = isMobile ? 100 : 150;
-    const fastSpeed = isMobile ? 80 : 120;
+    const speeds = {
+        normal: isMobile ? 100 : 150,
+        fast: isMobile ? 80 : 120
+    };
     
-    await typeWriter(mindBridgeElement, mindBridgeText, speed);
+    // Show mobile button if on mobile
+    const mobileButton = document.querySelector('.mobile-get-started');
+    if (isMobile && mobileButton) {
+        mobileButton.classList.add('show');
+    }
     
+    try {
+        // Animate logo text
+        await typeWriter(mindBridgeElement, texts.mindBridge, speeds.normal);
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        // Animate motto text
+        await typeWriter(mottoElements[0], texts.mental, speeds.fast);
+        await new Promise(resolve => setTimeout(resolve, 300));
+        await typeWriter(mottoElements[1], texts.health, speeds.fast);
+        
+    } catch (error) {
+        console.error('Animation error:', error);
+    }
+}
+
+/* ========================================
+   RESPONSIVE FUNCTIONALITY
+======================================== */
+
+/**
+ * Handles orientation and resize changes
+ */
+function handleResponsiveChanges() {
+    const isMobile = window.innerWidth <= 768;
+    const mobileButton = document.querySelector('.mobile-get-started');
     
-    await new Promise(resolve => setTimeout(resolve, 500));
-    await typeWriter(mentalHealthElements[0], mentalText, fastSpeed);
-    
-    
-    await new Promise(resolve => setTimeout(resolve, 300));
-    await typeWriter(mentalHealthElements[1], healthText, fastSpeed);
-    
-    // Show mobile button after typing animation completes (mobile only)
-    if (isMobile) {
-        await new Promise(resolve => setTimeout(resolve, 500)); // Wait a bit
-        const mobileButton = document.querySelector('.mobile-get-started');
-        if (mobileButton) {
+    if (mobileButton) {
+        if (isMobile) {
             mobileButton.classList.add('show');
+        } else {
+            mobileButton.classList.remove('show');
         }
     }
-   
 }
 
-// Handle orientation changes on mobile
-function handleOrientationChange() {
-    // Small delay to allow for orientation change to complete
-    setTimeout(() => {
-        // Force a reflow to handle any layout issues
-        document.body.style.height = '99vh';
-        setTimeout(() => {
-            document.body.style.height = '100vh';
-        }, 50);
-    }, 100);
-}
+/* ========================================
+   HAMBURGER MENU FUNCTIONALITY
+======================================== */
 
-// Hamburger menu functionality
+/**
+ * Initializes hamburger menu functionality
+ */
 function initHamburgerMenu() {
     const hamburgerMenu = document.getElementById('hamburgerMenu');
     const navLinks = document.getElementById('navLinks');
     
-    if (hamburgerMenu && navLinks) {
-        hamburgerMenu.addEventListener('click', () => {
-            hamburgerMenu.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', (event) => {
-            if (!hamburgerMenu.contains(event.target) && !navLinks.contains(event.target)) {
-                hamburgerMenu.classList.remove('active');
-                navLinks.classList.remove('active');
-            }
-        });
-        
-        // Close menu when clicking on a nav link
-        const navLinkElements = navLinks.querySelectorAll('.nav-link');
-        navLinkElements.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburgerMenu.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-    }
-}
-
-// Function to show mobile button if on mobile screen
-function showMobileButtonIfNeeded() {
-    const isMobile = window.innerWidth <= 768;
-    const mobileButton = document.querySelector('.mobile-get-started');
+    if (!hamburgerMenu || !navLinks) return;
     
-    if (isMobile && mobileButton && !mobileButton.classList.contains('show')) {
-        setTimeout(() => {
-            mobileButton.classList.add('show');
-        }, 100);
+    // Toggle menu on hamburger click
+    hamburgerMenu.addEventListener('click', () => {
+        hamburgerMenu.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (event) => {
+        if (!hamburgerMenu.contains(event.target) && !navLinks.contains(event.target)) {
+            closeHamburgerMenu();
+        }
+    });
+    
+    // Close menu when clicking on nav links
+    const navLinkElements = navLinks.querySelectorAll('.nav-link');
+    navLinkElements.forEach(link => {
+        link.addEventListener('click', () => {
+            closeHamburgerMenu();
+        });
+    });
+    
+    /**
+     * Closes the hamburger menu
+     */
+    function closeHamburgerMenu() {
+        hamburgerMenu.classList.remove('active');
+        navLinks.classList.remove('active');
     }
 }
 
-// Start animation when page loads
+/* ========================================
+   EVENT LISTENERS & INITIALIZATION
+======================================== */
+
+// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     animateTexts();
     initHamburgerMenu();
-    
-    // Fallback to ensure mobile button appears
-    setTimeout(showMobileButtonIfNeeded, 4000);
 });
 
-// Handle orientation changes
-window.addEventListener('orientationchange', handleOrientationChange);
-window.addEventListener('resize', handleOrientationChange);
+// Handle responsive changes
+window.addEventListener('orientationchange', handleResponsiveChanges);
+window.addEventListener('resize', handleResponsiveChanges);
+
+// Handle page visibility changes
+document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+        // Re-trigger animations if page becomes visible
+        handleResponsiveChanges();
+    }
+});

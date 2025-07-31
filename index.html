@@ -4,90 +4,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>MindBridge</title>
 
-    <!--Stylesheets-->
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="home_style.css">
 
-    <!--Logo-->
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/logo.png">
 
-    <!--Fonts-->
-
-    <!--Name - Playwrite Polska-->
+    <!-- Fonts -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playwrite+HU:wght@100..400&family=Playwrite+PL:wght@100..400&display=swap');
     </style>
 
-    <!--Scripts-->
+    <!-- Scripts -->
     <script src="home_script.js"></script>
 </head>
 
 <body>
-
-    <!--Navigation Bar-->
-
-    <!--TODO : Saare button ke links ko update karna hai-->
-    <div class="navbar">
-
-        <div class="navbar logo">
-            <img src="assets/logo.png" alt="Logo" style="width: 64px; height: 64px; padding:2vh">
-
-            <p class="design_text">MindBridge</p>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <img src="assets/logo.png" alt="MindBridge Logo" class="logo-image">
+            <h1 class="design_text logo-text">MindBridge</h1>
         </div>
 
-        <div class="navbar about">
-            <!-- Hamburger menu button (mobile only) -->
-            <button class="hamburger-menu" id="hamburgerMenu">
+        <div class="navbar-content">
+            <!-- Hamburger Menu (Mobile Only) -->
+            <button class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle navigation">
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
             </button>
-            
-            <!-- Navigation links -->
+
+            <!-- Navigation Links -->
             <div class="nav-links" id="navLinks">
-                <a href="#" class="regular_text nav-link">ABOUT US</a>
-                <a href="#" class="regular_text nav-link">WORK WITH US</a>
-                <a href="#" class="regular_text nav-link">EVENTS</a>
-                <a href="#" class="regular_text nav-link contact-link">CONTACT US</a>
-                <a href="#" class="regular_text nav-link login_button mobile-nav-get-started">GET STARTED ➜</a>
+                <a href="#about" class="regular_text nav-link">ABOUT US</a>
+                <a href="#work" class="regular_text nav-link">WORK WITH US</a>
+                <a href="#events" class="regular_text nav-link">EVENTS</a>
+                <a href="#contact" class="regular_text nav-link contact-link">CONTACT US</a>
             </div>
-            
-            <!-- Desktop Get Started button (visible on desktop) -->
-            <a href="#" class="regular_text nav-link login_button desktop-get-started">GET STARTED ➜</a>
+
+            <!-- Desktop Get Started Button -->
+            <a href="#get-started" class="regular_text nav-link login_button desktop-get-started">
+                GET STARTED ➜
+            </a>
         </div>
+    </nav>
 
-    </div>
+    <!-- Main Content -->
+    <main class="main-container">
+        <section class="hero-section">
+            <div class="motto design_text">
+                <span class="motto-line">Your Mental</span>
+                <img src="assets/star.svg" alt="Decorative star" class="star-icon" id="star">
+                <span class="motto-line">Health Matters</span>
+            </div>
 
-    <div class="main">
-        <div class="moto design_text">
-            <span>Your Mental</span>
-            <img src="assets/star.svg" alt="star" style="width: 1em; height: 1.5em; rotate: z 250deg;">
-            <br>
-            <span>Health Matters</span>
-            
-            <!-- Mobile Get Started button (appears after typing animation) -->
+            <!-- Mobile Get Started Button -->
             <div class="mobile-get-started">
-                <a href="#" class="regular_text nav-link login_button mobile-button">GET STARTED ➜</a>
+                <a href="#get-started" class="regular_text nav-link login_button">
+                    GET STARTED ➜
+                </a>
             </div>
+        </section>
+    </main>
+
+    <!-- Bottom Section -->
+    <footer class="bottom-section regular_text">
+        <div class="support-message">
+            <span class="support-text">
+                You <strong>don't</strong> have<br>
+                to <strong>struggle</strong> in<br>
+                silence!
+            </span>
         </div>
-    </div>
 
-    <div class="bottom  regular_text ">
-        <span style="padding: 3vh; font-weight: 0;">You <b>don't</b> have <br> to <b>struggle </b> in <br> silence!</span>
-
-        <img src="assets/mediating.svg" alt="mediating" style="width: 12em; height: 12em;">
-
-        <div style="padding-right: 3vh;">
-            <span class="design_text">Grief</span>
-            <br>
-            <span style="font-style: oblique; font-size: 0.5em; font-weight: 50;">Each day we learn of the<br>griefs and tribulations
-                <br> which affect out <br> constituents or ourselves.</span>
+        <div class="meditation-image">
+            <img src="assets/mediating.svg" alt="Person meditating" class="meditation-icon">
         </div>
-    </div>
 
-
+        <div class="grief-content">
+            <h2 class="design_text grief-title">Grief</h2>
+            <p class="grief-description">
+                Each day we learn of the griefs and tribulations<br>
+                which affect our constituents or ourselves.
+            </p>
+        </div>
+    </footer>
 </body>
 
 </html>
