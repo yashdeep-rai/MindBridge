@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - MindBridge</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../home_style.css">
+    <link rel="stylesheet" href="dashboard.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/logo.png">
+
+    <!-- Fonts -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playwrite+HU:wght@100..400&family=Playwrite+PL:wght@100..400&display=swap');
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <img src="../assets/logo.png" alt="MindBridge Logo" class="logo-image">
+            <h1 class="design_text logo-text">MindBridge</h1>
+        </div>
+
+        <div class="navbar-content">
+            <div class="nav-links">
+                <span id="userGreeting" class="user-greeting regular_text"></span>
+                <button onclick="dashboardSystem.logout()" class="logout-btn">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <main class="dashboard-main">
+        <div id="dashboardContent" class="dashboard-container">
+            <!-- Content will be loaded here -->
+        </div>
+    </main>
+
+    <!-- Loading Indicator -->
+    <div id="loadingIndicator" class="loading-indicator" style="display: none;">
+        <div class="loading-spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Modals -->
+    <div id="moodModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="dashboardSystem.closeMoodModal()">&times;</span>
+            <h3>How are you feeling today?</h3>
+            <div class="mood-options">
+                <button class="mood-btn" data-mood="5" onclick="dashboardSystem.selectMood(5)">😊 Great</button>
+                <button class="mood-btn" data-mood="4" onclick="dashboardSystem.selectMood(4)">🙂 Good</button>
+                <button class="mood-btn" data-mood="3" onclick="dashboardSystem.selectMood(3)">😐 Okay</button>
+                <button class="mood-btn" data-mood="2" onclick="dashboardSystem.selectMood(2)">😔 Not Great</button>
+                <button class="mood-btn" data-mood="1" onclick="dashboardSystem.selectMood(1)">😢 Poor</button>
+            </div>
+            <textarea id="moodNotes" placeholder="Any notes about your mood today? (optional)"></textarea>
+            <button onclick="dashboardSystem.saveMoodEntry()" class="submit-btn">Save Entry</button>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
