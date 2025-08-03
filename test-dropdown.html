@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Language Dropdown</title>
+    <link rel="stylesheet" href="home_style.css">
+    <style>
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            background: #f0f0f0;
+        }
+        .success { background: #d4edda; }
+        .error { background: #f8d7da; }
+    </style>
+</head>
+<body data-page="test">
+    <div class="test-container">
+        <h1>Language Dropdown Test</h1>
+        
+        <div id="status" class="status">Loading...</div>
+        
+        <!-- Navigation will be inserted here -->
+        <div id="navbar-container"></div>
+        
+        <div style="margin-top: 20px;">
+            <p>Click the language button above to test the dropdown functionality.</p>
+            <p>Current language: <span id="current-lang">Loading...</span></p>
+        </div>
+    </div>
+
+    <script src="js/languageManager.js" type="module"></script>
+    <script src="js/components.js" type="module"></script>
+    
+    <script>
+        // Test script
+        document.addEventListener('DOMContentLoaded', () => {
+            const statusDiv = document.getElementById('status');
+            const currentLangSpan = document.getElementById('current-lang');
+            
+            setTimeout(() => {
+                const languageBtn = document.getElementById('languageDropdownBtn');
+                const languageMenu = document.getElementById('languageDropdownMenu');
+                
+                if (languageBtn && languageMenu) {
+                    statusDiv.textContent = 'Language dropdown elements found!';
+                    statusDiv.className = 'status success';
+                    
+                    // Test button click
+                    languageBtn.addEventListener('click', () => {
+                        statusDiv.textContent = 'Language button clicked!';
+                    });
+                } else {
+                    statusDiv.textContent = 'Language dropdown elements NOT found!';
+                    statusDiv.className = 'status error';
+                }
+                
+                // Update current language
+                if (window.languageManager) {
+                    currentLangSpan.textContent = window.languageManager.getCurrentLanguage();
+                }
+            }, 500);
+            
+            // Listen for language changes
+            document.addEventListener('languageChanged', (event) => {
+                currentLangSpan.textContent = event.detail.language;
+                statusDiv.textContent = `Language changed to: ${event.detail.language}`;
+                statusDiv.className = 'status success';
+            });
+        });
+    </script>
+</body>
+</html>
