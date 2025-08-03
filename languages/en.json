@@ -1,0 +1,40 @@
+{
+  "navbar": {
+    "logo": "MindBridge",
+    "aboutUs": "ABOUT US",
+    "workWithUs": "WORK WITH US",
+    "events": "EVENTS",
+    "contactUs": "CONTACT US",
+    "getStarted": "GET STARTED ➜"
+  },
+  "home": {
+    "motto": "Your Mental Health Matters",
+    "supportMessage": "You <strong>don't</strong> have<br>to <strong>struggle</strong> in<br>silence!<br><br>We are here just for you 😁",
+    "griefTitle": "Grief",
+    "griefDescription": "Each day we learn of the griefs and tribulations<br>which affect our constituents or ourselves."
+  },
+  "about": {
+    "title": "About Us",
+    "description": "Welcome to MindBridge - your mental health companion. We are dedicated to providing support and resources for mental wellness."
+  },
+  "work": {
+    "title": "Work With Us",
+    "description": "Join our mission to improve mental health and make a difference in people's lives."
+  },
+  "events": {
+    "title": "Events",
+    "description": "Join us for mental health awareness events and community gatherings."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "Get in touch with us for support, questions, or feedback."
+  },
+  "getStarted": {
+    "title": "Get Started",
+    "description": "Begin your mental health journey with MindBridge today."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong"
+  }
+}
