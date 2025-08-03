@@ -41,11 +41,27 @@ async function animateTexts() {
     const mindBridgeElement = document.querySelector('.logo-text');
     const mottoElements = document.querySelectorAll('.motto-line');
     
+    let quotes,quote,data,response;
     // Text content
     const texts = {
         mindBridge: 'MindBridge',
-        mental: 'Your Mental',
-        health: 'Health Matters'
+        
+        random_quote : async() => {
+            // Use the language-aware quote function
+            if (window.languageManager) {
+                return await getRandomQuote();
+            } else {
+                // Fallback if language manager isn't loaded
+                try {
+                    const response = await fetch("./text/quotes_db.json");
+                    const data = await response.json();
+                    const quote = data[Math.floor(Math.random() * data.length)];
+                    return quote;
+                } catch (error) {
+                    return 'Your Mental Health Matters';
+                }
+            }
+        }
     };
     
     // Clear existing content
@@ -71,9 +87,8 @@ async function animateTexts() {
         await new Promise(resolve => setTimeout(resolve, 500));
         
         // Animate motto text
-        await typeWriter(mottoElements[0], texts.mental, speeds.fast);
+        await typeWriter(mottoElements[0], await texts.random_quote(), speeds.fast);
         await new Promise(resolve => setTimeout(resolve, 300));
-        await typeWriter(mottoElements[1], texts.health, speeds.fast);
         
     } catch (error) {
         console.error('Animation error:', error);

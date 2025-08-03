@@ -1,0 +1,70 @@
+.about-head{
+    display: flex;
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+    width: 100%;
+}
+
+.about-container {
+    padding: 2rem;
+    min-height: calc(100vh - 200px); /* Adjust based on navbar and footer height */
+}
+
+.about-description {
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 1rem;
+    color: #666;
+}
+
+/* Dark Theme Styles */
+[data-theme="dark"] {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .navbar {
+    background-color: #2d2d2d;
+}
+
+[data-theme="dark"] .nav-link:hover {
+    background-color: rgba(180, 42, 42, 0.2);
+}
+
+[data-theme="dark"] .login_button {
+    border-color: #e0e0e0;
+}
+
+[data-theme="dark"] .login_button:hover {
+    background-color: #444;
+}
+
+[data-theme="dark"] .about-description {
+    color: #ccc;
+}
+
+/* Mobile Language Toggle */
+@media screen and (max-width: 768px) {
+    .language-toggle {
+        order: 2;
+        margin-right: 0.5rem;
+        padding: 0.25rem;
+    }
+    
+    .language-icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .theme-toggle {
+        margin-right: 0.5rem;
+        padding: 0.25rem;
+    }
+    
+    .theme-icon {
+        width: 20px;
+        height: 20px;
+    }
+}

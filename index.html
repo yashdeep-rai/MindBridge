@@ -15,10 +15,8 @@
     <!-- Fonts -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playwrite+HU:wght@100..400&family=Playwrite+PL:wght@100..400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Playwrite+HU:wght@100..400&family=Playwrite+PL:wght@100..400&display=swap');
     </style>
-
-    <!-- Scripts -->
-    <script src="home_script.js"></script>
 </head>
 
 <body>
@@ -26,10 +24,29 @@
     <nav class="navbar">
         <div class="navbar-logo">
             <img src="assets/logo.png" alt="MindBridge Logo" class="logo-image">
-            <h1 class="design_text logo-text">MindBridge</h1>
+            <a href="index.html" class="design_text logo-text" data-translate="navbar.logo">MindBridge</a>
         </div>
 
         <div class="navbar-content">
+            <!-- Language Dropdown -->
+            <div class="language-dropdown">
+                <button id="languageDropdownBtn" class="language-toggle" aria-label="Select language">
+                    <img src="assets/language_light.svg" alt="Language" class="language-icon">
+                </button>
+                <div id="languageDropdownMenu" class="language-dropdown-menu">
+                    <div class="language-option" data-lang="en">English</div>
+                    <div class="language-option" data-lang="hi">हिंदी</div>
+                    <div class="language-option" data-lang="bho">भोजपुरी</div>
+                    <div class="language-option" data-lang="mr">मराठी</div>
+                    <div class="language-option" data-lang="te">తెలుగు</div>
+                </div>
+            </div>
+
+            <!-- Theme Toggle -->
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                <img src="assets/dark-mode.svg" alt="Switch to dark mode" class="theme-icon">
+            </button>
+
             <!-- Hamburger Menu (Mobile Only) -->
             <button class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle navigation">
                 <span class="hamburger-line"></span>
@@ -39,14 +56,14 @@
 
             <!-- Navigation Links -->
             <div class="nav-links" id="navLinks">
-                <a href="#about" class="regular_text nav-link">ABOUT US</a>
-                <a href="#work" class="regular_text nav-link">WORK WITH US</a>
-                <a href="#events" class="regular_text nav-link">EVENTS</a>
-                <a href="#contact" class="regular_text nav-link contact-link">CONTACT US</a>
+                <a href="./about/about.html" class="regular_text nav-link" data-translate="navbar.aboutUs">ABOUT US</a>
+                <a href="./work/work.html" class="regular_text nav-link" data-translate="navbar.workWithUs">WORK WITH US</a>
+                <a href="./events/events.html" class="regular_text nav-link" data-translate="navbar.events">EVENTS</a>
+                <a href="./contact/contact.html" class="regular_text nav-link contact-link" data-translate="navbar.contactUs">CONTACT US</a>
             </div>
 
             <!-- Desktop Get Started Button -->
-            <a href="#get-started" class="regular_text nav-link login_button desktop-get-started">
+            <a href="./get-started/get-started.html" class="regular_text nav-link login_button desktop-get-started" data-translate="navbar.getStarted">
                 GET STARTED ➜
             </a>
         </div>
@@ -56,14 +73,14 @@
     <main class="main-container">
         <section class="hero-section">
             <div class="motto design_text">
-                <span class="motto-line">Your Mental</span>
                 <img src="assets/star.svg" alt="Decorative star" class="star-icon" id="star">
-                <span class="motto-line">Health Matters</span>
+                <span class="motto-line" data-translate="home.motto">Your Mental Health Matters</span>
+                <img src="assets/star.svg" alt="Decorative star" class="star-icon" id="star">
             </div>
 
             <!-- Mobile Get Started Button -->
             <div class="mobile-get-started">
-                <a href="#get-started" class="regular_text nav-link login_button">
+                <a href="./get-started/get-started.html" class="regular_text nav-link login_button" data-translate="navbar.getStarted">
                     GET STARTED ➜
                 </a>
             </div>
@@ -73,10 +90,11 @@
     <!-- Bottom Section -->
     <footer class="bottom-section regular_text">
         <div class="support-message">
-            <span class="support-text">
+            <span class="support-text" data-translate="home.supportMessage" data-translate-html="true">
                 You <strong>don't</strong> have<br>
                 to <strong>struggle</strong> in<br>
-                silence!
+                silence!<br><br>
+                We are here just for you 😁
             </span>
         </div>
 
@@ -85,13 +103,17 @@
         </div>
 
         <div class="grief-content">
-            <h2 class="design_text grief-title">Grief</h2>
-            <p class="grief-description">
+            <h2 class="design_text grief-title" data-translate="home.griefTitle">Grief</h2>
+            <p class="grief-description" data-translate="home.griefDescription" data-translate-html="true">
                 Each day we learn of the griefs and tribulations<br>
                 which affect our constituents or ourselves.
             </p>
         </div>
     </footer>
+
+    <!-- Scripts -->
+    <script src="js/languageManager.js"></script>
+    <script src="home_script.js"></script>
 </body>
 
 </html>

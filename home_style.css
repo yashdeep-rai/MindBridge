@@ -16,6 +16,66 @@ body {
     flex-direction: column;
     user-select: none;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+:any-link{
+    color:inherit;
+    text-decoration: none;
+}
+
+/* ========================================
+   THEME STYLES
+======================================== */
+
+/* Dark Theme */
+[data-theme="dark"] {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .navbar {
+    background-color: #2d2d2d;
+}
+
+[data-theme="dark"] .bottom-section {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .language-selector {
+    background-color: #333;
+    border-color: #555;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .language-selector:hover,
+[data-theme="dark"] .language-selector:focus {
+    border-color: #b42a2a;
+}
+
+[data-theme="dark"] .nav-link:hover {
+    background-color: rgba(180, 42, 42, 0.2);
+}
+
+[data-theme="dark"] .login_button {
+    border-color: #e0e0e0;
+}
+
+[data-theme="dark"] .login_button:hover {
+    background-color: #444;
+}
+
+[data-theme="dark"] .grief-description {
+    color: #ccc;
+}
+
+[data-theme="dark"] .hamburger-line {
+    background-color: #e0e0e0;
+}
+
+[data-theme="dark"] .nav-links {
+    background-color: #2d2d2d;
+    border-color: #555;
 }
 
 /* ========================================
@@ -30,6 +90,19 @@ body {
 
 .regular_text {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* Language-specific fonts for stylized text */
+.language-option[data-lang="hi"],
+.language-option[data-lang="bho"],
+.language-option[data-lang="mr"],
+[data-translate][lang="hi"],
+[data-translate][lang="bho"],
+[data-translate][lang="mr"],
+.design_text[lang="hi"],
+.design_text[lang="bho"],
+.design_text[lang="mr"] {
+    font-family: 'Kalam', 'Playwrite PL', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* ========================================
@@ -75,6 +148,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
+    transition: background-color 0.3s ease;
 }
 
 .navbar-logo {
@@ -95,7 +169,121 @@ body {
 .navbar-content {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 3rem; /* Increased gap between MindBridge title and language option */
+}
+
+/* Language Dropdown Styles */
+.language-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.language-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease;
+    margin-right: 1rem;
+}
+
+.language-toggle:hover {
+    background-color: rgba(180, 42, 42, 0.1);
+}
+
+.language-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.language-dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    min-width: 150px;
+    margin-top: 0.5rem;
+}
+
+.language-dropdown-menu.show {
+    display: block;
+}
+
+.language-option {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-bottom: 1px solid #eee;
+    color: #333;
+}
+
+.language-option[data-lang="hi"],
+.language-option[data-lang="bho"],
+.language-option[data-lang="mr"] {
+    font-family: 'Kalam', sans-serif;
+    font-weight: 400;
+}
+
+.language-option:last-child {
+    border-bottom: none;
+}
+
+.language-option:hover {
+    background-color: rgba(180, 42, 42, 0.1);
+}
+
+.language-option.selected {
+    background-color: rgba(180, 42, 42, 0.2);
+    font-weight: 600;
+}
+
+/* Dark theme dropdown styles */
+[data-theme="dark"] .language-dropdown-menu {
+    background-color: #2d2d2d;
+    border-color: #555;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .language-option {
+    color: #e0e0e0;
+    border-bottom-color: #555;
+}
+
+[data-theme="dark"] .language-option:hover {
+    background-color: rgba(180, 42, 42, 0.2);
+}
+
+[data-theme="dark"] .language-option.selected {
+    background-color: rgba(180, 42, 42, 0.3);
+    color: #fff;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease;
+    margin-right: 1rem;
+}
+
+.theme-toggle:hover {
+    background-color: rgba(180, 42, 42, 0.1);
+}
+
+.theme-icon {
+    width: 24px;
+    height: 24px;
 }
 
 /* Navigation Links */
@@ -237,6 +425,7 @@ body {
     gap: 2rem;
     font-size: 1.6em;
     background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s ease;
 }
 
 .support-text {
@@ -275,12 +464,39 @@ body {
 
     .navbar-content {
         position: relative;
+        gap: 1.5rem; /* Reduced gap for mobile */
+    }
+
+    /* Language and Theme Controls */
+    .language-dropdown {
+        order: 2;
+    }
+    
+    .language-toggle {
+        margin-right: 0.5rem;
+        padding: 0.25rem;
+    }
+    
+    .language-icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .theme-toggle {
+        margin-right: 0.5rem;
+        padding: 0.25rem;
+        order: 3;
+    }
+    
+    .theme-icon {
+        width: 20px;
+        height: 20px;
     }
 
     /* Hamburger Menu */
     .hamburger-menu {
         display: flex;
-        order: 1;
+        order: 4;
     }
 
     .nav-links {
